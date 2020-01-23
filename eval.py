@@ -1,5 +1,5 @@
 """
-evaluating MoCo 
+evaluating MoCo
 
 MoCo: Momentum Contrast for Unsupervised Visual Representation Learning
 
@@ -56,8 +56,8 @@ def parse_option():
 
     # specify folder
     parser.add_argument('--model-path', type=str, help="model path")
-    parser.add_argument('--output-root', type=str, default='./output', help='root director for output')
-    parser.add_argument('--data-root', type=str, default='./data', help='root director of dataset')
+    parser.add_argument('--output-root', type=str, default='./output', help='root directory for output')
+    parser.add_argument('--data-root', type=str, default='./data', help='root directory of dataset')
 
     # experiment name
     parser.add_argument('--exp-name', type=str, default='exp', help='experiment name')

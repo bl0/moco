@@ -7,7 +7,7 @@ This repository carefully implemented important details such as ShuffleBN and di
 The following enverionments is tested:
 
 * `Anaconda` with `python >= 3.6`
-* `pytorch=1.3, torchvision, cuda=9.2`
+* `pytorch>=1.3, torchvision, cuda=9.2`
 * `tensorboard_logger`: `pip install tensorboard_logger`
 
 ## Training Momentum Contrast on ImageNet
@@ -19,7 +19,8 @@ The following enverionments is tested:
   python -m torch.distributed.launch --nproc_per_node=8 \
       train.py \
       --batch-size 32 \
-      --exp-name ${exp_name}
+      --exp-name ${exp_name} \
+      --data-root /root/directory/of/datasets
   ```
 
   The checkpoints and tensorboard log will be saved in `./output/imagenet/${exp_name}`. Run `python train.py --help` for more help.
@@ -32,7 +33,8 @@ The following enverionments is tested:
       eval.py \
       --exp-name ${exp_name} \
       --model-path ./output/imagenet/${exp_name}/models/current.pth \
-      --batch-size 64
+      --batch-size 64 \
+      --data-root /root/directory/of/datasets
   ```
 
   The checkpoints and tensorboard log will be saved in `./output/imagenet/${exp_name}`. Run `python eval.py --help` for more help.

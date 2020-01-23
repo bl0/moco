@@ -35,8 +35,8 @@ def parse_option():
     parser.add_argument('--momentum', type=float, default=0.9, help='momentum for SGD')
 
     # root folders
-    parser.add_argument('--data-root', type=str, default='./data', help='root director of dataset')
-    parser.add_argument('--output-root', type=str, default='./output', help='root director for output')
+    parser.add_argument('--data-root', type=str, default='./data', help='root directory of dataset')
+    parser.add_argument('--output-root', type=str, default='./output', help='root directory for output')
 
     # dataset
     parser.add_argument('--dataset', type=str, default='imagenet', choices=['imagenet100', 'imagenet'])
@@ -266,7 +266,8 @@ def train_moco(epoch, train_loader, model, model_ema, contrast, criterion, optim
 
 if __name__ == '__main__':
     opt = parse_option()
-    pprint(vars(opt))
+    if opt.local_rank == 0:
+        pprint(vars(opt))
 
     torch.cuda.set_device(opt.local_rank)
     torch.distributed.init_process_group(backend='nccl', init_method='env://')
