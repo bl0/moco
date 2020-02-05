@@ -12,8 +12,10 @@ from pprint import pprint
 import tensorboard_logger as tb_logger
 import torch
 import torch.backends.cudnn as cudnn
+import torch.nn.functional as F
 from torch.nn.parallel import DistributedDataParallel
 from torchvision import transforms
+
 
 from lib.NCE import MemoryMoCo, NCESoftmaxLoss
 from lib.dataset import ImageFolderInstance
