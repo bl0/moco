@@ -41,14 +41,14 @@ The following enverionments is tested:
 
 ## Pretrained weights
 
-TBD
+Pre-trained model checkpoint and tensorboard log for K = 16384 and 65536 can be downloaded from [OneDrive](https://1drv.ms/u/s!AsaPPmtCAq08pEsUojFnhhnGLG8F?e=zFwbGY).
 
 ## Performance comparison
 
 | K     | Acc@1 (ours) | Acc@1 (MoCo paper) |
 | ----- | ------------ | ------------------ |
-| 16384 | 59.89        | 60.4               |
-| 65536 | 60.79        | 60.6               |
+| 16384 | 59.89 [model](https://1drv.ms/u/s!AsaPPmtCAq08pFfk01K2l2T7Hv9P?e=uI1vGx)        | 60.4               |
+| 65536 | 60.79 [model](https://1drv.ms/u/s!AsaPPmtCAq08pFa2xJRkILatNLh8?e=IMt2xg)       | 60.6               |
 
 ## Acknowledgements
 
