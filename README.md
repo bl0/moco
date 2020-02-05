@@ -39,7 +39,7 @@ The following enverionments is tested:
 
   The checkpoints and tensorboard log will be saved in `./output/imagenet/${exp_name}`. Run `python eval.py --help` for more help.
 
-## Pretrained weights
+## Pre-trained weights
 
 Pre-trained model checkpoint and tensorboard log for K = 16384 and 65536 can be downloaded from [OneDrive](https://1drv.ms/u/s!AsaPPmtCAq08pEsUojFnhhnGLG8F?e=zFwbGY).
 
