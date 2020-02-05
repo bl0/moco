@@ -238,7 +238,7 @@ def train_moco(epoch, train_loader, model, model_ema, contrast, criterion, optim
 
         out = contrast(feat_q, feat_k, feat_k_all)
         loss = criterion(out)
-        prob = out[:, 0].mean()
+        prob = F.softmax(out, dim=1)[:, 0].mean()
 
         # backward
         optimizer.zero_grad()
