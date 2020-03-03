@@ -67,8 +67,12 @@ def parse_option():
     parser.add_argument('--epochs', type=int, default=200, help='number of training epochs')
     parser.add_argument('--start-epoch', type=int, default=1, help='used for resume')
     parser.add_argument("--local_rank", type=int)
-
+    parser.add_argument("--rng-seed", type=int, default=0, help='manual seed')
+    
     args = parser.parse_args()
+    
+    torch.manual_seed(args.rng_seed)
+    torch.cuda.manual_seed_all(args.rng_seed)
 
     # set the path according to the environment
     output_dir = check_dir(os.path.join(args.output_root, args.dataset, args.exp_name))
