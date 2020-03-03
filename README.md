@@ -1,6 +1,10 @@
 Unofficial implementation for [MoCo: Momentum Contrast for Unsupervised Visual Representation Learning](https://arxiv.org/abs/1911.05722)
 
-This repository carefully implemented important details such as ShuffleBN and distributed Queue mentioned in the paper to reproduce the reported results.
+## Highlight
+
+1. **Effective**. Carefully implement important details such as ShuffleBN and distributed Queue mentioned in the paper to reproduce the reported results.
+2. **Efficient**. The implementation is based on pytorch DistributedDataParallel. It only takes about 40 hours to train MoCo on imagenet dataset with 8 V100 gpus. The time cost is smaller than 3 day reported on original paper.
+
 
 ## Requirements
 
