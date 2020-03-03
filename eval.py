@@ -71,11 +71,15 @@ def parse_option():
     parser.add_argument('--bn', action='store_true', help='use parameter-free BN')
     parser.add_argument('--cosine', action='store_true', help='use cosine annealing')
     parser.add_argument('-e', '--eval', action='store_true', help='only evaluate')
+    parser.add_argument("--rng-seed", type=int, default=0, help='manual seed')
 
     # for DistributedDataParallel
     parser.add_argument("--local_rank", type=int)
 
     args = parser.parse_args()
+    
+    torch.manual_seed(args.rng_seed)
+    torch.cuda.manual_seed_all(args.rng_seed)
 
     output_dir = check_dir(os.path.join(args.output_root, args.dataset, args.exp_name))
     args.model_folder = check_dir(os.path.join(output_dir, 'linear_models'))
