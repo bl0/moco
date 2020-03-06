@@ -3,10 +3,9 @@ from __future__ import print_function
 import torch
 import torchvision.datasets as datasets
 
-from .util import AverageMeter
 
 class ImageFolderInstance(datasets.ImageFolder):
-    """Folder datasets which returns the index of the image as well
+    """Folder dataset which returns the index of the image as well
     """
 
     def __init__(self, root, transform=None, target_transform=None, two_crop=False):

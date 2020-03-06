@@ -1,18 +1,7 @@
-import os
+import argparse
 
 import torch
-import numpy as np
-
 import torch.distributed as dist
-
-
-def adjust_learning_rate(epoch, opt, optimizer):
-    """Sets the learning rate to the initial LR decayed by 0.1 every steep step"""
-    steps = np.sum(epoch > np.asarray(opt.lr_decay_epochs))
-    if steps > 0:
-        new_lr = opt.learning_rate * (opt.lr_decay_rate ** steps)
-        for param_group in optimizer.param_groups:
-            param_group['lr'] = new_lr
 
 
 class AverageMeter(object):
@@ -55,11 +44,6 @@ def accuracy(output, target, topk=(1,)):
         return res
 
 
-def check_dir(path):
-    os.makedirs(path, exist_ok=True)
-    return path
-
-
 def dist_collect(x):
     """ collect all tensor from all GPUs
     args:
@@ -72,6 +56,13 @@ def dist_collect(x):
                 for _ in range(dist.get_world_size())]
     dist.all_gather(out_list, x)
     return torch.cat(out_list, dim=0)
+
+
+def reduce_tensor(tensor):
+    rt = tensor.clone()
+    dist.all_reduce(rt, op=dist.ReduceOp.SUM)
+    rt /= dist.get_world_size()
+    return rt
 
 
 class DistributedShufle:
@@ -134,3 +125,7 @@ def moment_update(model, model_ema, m):
     """ model_ema = m * model_ema + (1 - m) model """
     for p1, p2 in zip(model.parameters(), model_ema.parameters()):
         p2.data.mul_(m).add_(1 - m, p1.detach().data)
+
+
+class MyHelpFormatter(argparse.MetavarTypeHelpFormatter, argparse.ArgumentDefaultsHelpFormatter):
+    pass
