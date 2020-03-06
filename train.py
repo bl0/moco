@@ -39,7 +39,7 @@ def parse_option():
     parser.add_argument('--data-dir', type=str, required=True, help='root director of dataset')
     parser.add_argument('--dataset', type=str, default='imagenet', choices=['imagenet100', 'imagenet'],
                         help='dataset to training')
-    parser.add_argument('--crop', type=float, default=0.2, help='minimum crop')
+    parser.add_argument('--crop', type=float, default=0.08, help='minimum crop')
     parser.add_argument('--aug', type=str, default='CJ', choices=['NULL', 'CJ'],
                         help="augmentation type: NULL for normal supervised aug, CJ for aug with ColorJitter")
     parser.add_argument('--batch-size', type=int, default=128, help='batch_size')
@@ -49,7 +49,7 @@ def parse_option():
     parser.add_argument('--model', type=str, default='resnet50', choices=['resnet50'], help="backbone model")
     parser.add_argument('--model-width', type=int, default=1, help='width of resnet, eg, 1, 2, 4')
     parser.add_argument('--alpha', type=float, default=0.999, help='exponential moving average weight')
-    parser.add_argument('--nce-k', type=int, default=16384, help='num negative sampler')
+    parser.add_argument('--nce-k', type=int, default=65536, help='num negative sampler')
     parser.add_argument('--nce-t', type=float, default=0.07, help='NCE temperature')
 
     # optimization
