@@ -50,6 +50,13 @@ The following enverionments is tested:
 
 Pre-trained model checkpoint and tensorboard log for K = 16384 and 65536 on imagenet dataset can be downloaded from [OneDrive](https://1drv.ms/u/s!AsaPPmtCAq08pEsUojFnhhnGLG8F?e=zFwbGY).
 
+BTW, the hyperparameters is also stored in model checkpoint, you can get full configs in the checkpoints like this:
+```python
+import torch
+ckpt = torch.load('model.pth')
+ckpt['opt']
+```
+
 ## Performance comparison with original paper
 
 | K     | Acc@1 (ours)                                                               | Acc@1 (MoCo paper) |
